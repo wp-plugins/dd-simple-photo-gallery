@@ -18,12 +18,12 @@ It is a very simple, fast and light weight wordpress plguins with gallery, photo
 
 **II) Usage:**
 
-Add below sampled code to show a gallery on any page or post. Then it's very simple:
-
-[DDSPG_Gallery id="1"]
-
-This example is to load a gallery which id is 1
-
+1. Create a gallery
+2. Add some photos on this gallery
+3. Copy the gallery code from gallery listing page Example: [DDSPG_Gallery id="1"]
+4. past the code on your wordpress page or post
+5. adjust the settings using default settings admin page
+6. that's it (This example is to load a gallery which id is 1)
 
 Full instructions explaining more options can be found on the [plugin's homepage](http://www.dropndot.com/blog/wordpress/dd-simple-photo-gallery-wordpress-plugin/).
 
