@@ -29,7 +29,7 @@ Full instructions explaining more options can be found on the [plugin's homepage
 
 **IV) How does it look in action?**
 
-Examples can be found on the [plugin's homepage](http://www.dropndot.com/blog/development/dd-simple-photo-gallery-wordpress-plugin-example/).
+Examples can be found on the [plugin's example page](http://www.dropndot.com/blog/development/dd-simple-photo-gallery-wordpress-plugin-example/).
 
 **V) Issues:**
 
