@@ -1,6 +1,6 @@
 === DD Simple Photo Gallery ===
 Contributors: phpfarmer
-Donate link: http://www.dropndot.com/blog/dd-simple-photo-gallery-wordpress-plugin/
+Donate link: http://www.dropndot.com/blog/wordpress/dd-simple-photo-gallery-wordpress-plugin/
 Tags: photo,gallery,simple
 Requires at least: 2.8.4
 Tested up to: 2.8.4
@@ -25,16 +25,16 @@ Add below sampled code to show a gallery on any page or post. Then it's very sim
 This example is to load a gallery which id is 1
 
 
-Full instructions explaining more options can be found on the [plugin's homepage](http://www.dropndot.com/blog/dd-simple-photo-gallery-wordpress-plugin/).
+Full instructions explaining more options can be found on the [plugin's homepage](http://www.dropndot.com/blog/wordpress/dd-simple-photo-gallery-wordpress-plugin/).
 
 **IV) How does it look in action?**
 
-Examples can be found on the [plugin's homepage](http://www.dropndot.com/blog/dd-simple-photo-gallery-wordpress-plugin-example/).
+Examples can be found on the [plugin's homepage](http://www.dropndot.com/blog/development/dd-simple-photo-gallery-wordpress-plugin-example/).
 
 **V) Issues:**
 
 It works for me. But this is still not much tested, so there are for sure some issues. **Please** let me know :-)
-Write a [comment](http://www.dropndot.com/blog/dd-simple-photo-gallery-wordpress-plugin/) or a [mail](mailto:tojibon@gmail.com).
+Write a [comment](http://www.dropndot.com/blog/wordpress/dd-simple-photo-gallery-wordpress-plugin/) or a [mail](mailto:tojibon@gmail.com).
 
 
 
