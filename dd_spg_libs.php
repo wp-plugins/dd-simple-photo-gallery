@@ -1,19 +1,4 @@
 <?php
-/*
-Plugin Name: DD Simple Photo Gallery
-Plugin URI: http://www.dropndot.com/blog/dd-simple-photo-gallery-wordpress-plugin/
-Description: DD Simple Photo Gallery is a simple, fast and light plugin to create a gallery of your custom uploaded gallery wise photos on your WordPress enabled website.  This plugin aims at providing a simple yet customizable way to create, manage gallery and upload photos under custom gallery.
-Version: 1.0
-Author: phpfarmer(Jewel Ahmed)
-Author URI: http://www.phpfarmer.com
-License: GPL2
-Release Date: 10-Jul-2011
-
-Copyright 2011 Jewel Ahmed (email : jewel@dropndot.com)
-
-Filename: dd_spg_libs.php
-Uses: This file will load for plugins front-end and backend, It has some global functions, So all function here can access from anywhere of this plugins.
-*/
 
 /**
 * public constant for plugins base url

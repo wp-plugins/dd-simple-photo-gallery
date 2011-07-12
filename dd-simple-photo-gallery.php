@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: DD Simple Photo Gallery
-Plugin URI: http://www.dropndot.com/blog/dd-simple-photo-gallery-wordpress-plugin/
+Plugin URI: http://www.dropndot.com/blog/wordpress/dd-simple-photo-gallery-wordpress-plugin/
 Description: DD Simple Photo Gallery is a free, simple, fast and light weight wordpress  plugin to create photo gallery for your wordpress enabled website.
 Version: 1.0
 Author: Jewel Ahmed
