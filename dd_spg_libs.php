@@ -38,7 +38,7 @@ define('VERSION', '1.0');
 * @var string url
 * @access public
 */
-define('PLUGINS_WEBSITE', 'http://www.dropndot.com/blog/dd-simple-photo-gallery-wordpress-plugin/');
+define('PLUGINS_WEBSITE', 'http://www.dropndot.com/blog/wordpress/dd-simple-photo-gallery-wordpress-plugin/');
 
 /**
 * To generate Information display box on admin interface
@@ -70,7 +70,7 @@ function dd_spg_version_line(){
     return "" .
     " <h4 align=\"right\" style=\"margin-right:0.5%\">" .
        " &nbsp;Version: <b>" . VERSION . "</b> |" .
-        " <a href=\"".PLUGINS_WEBSITE."\">Support</a> |" .
+        " <a href=\"".PLUGINS_WEBSITE."\">Discussion</a> |" .
         " <a href=\"http://wordpress.org/extend/plugins/dd-simple-photo-gallery-plugin/faq/\">FAQ</a> |" .
         " <a href=\"http://wordpress.org/extend/plugins/dd-simple-photo-gallery-plugin/\">Rate this plugin</a> |" .
         " <a href=\"http://wordpress.org/extend/plugins/dd-simple-photo-gallery-plugin/changelog/\">Changelog</a> |" .
