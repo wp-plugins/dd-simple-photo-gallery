@@ -40,14 +40,12 @@ Write a [comment](http://www.dropndot.com/blog/wordpress/dd-simple-photo-gallery
 
 == Installation ==
 
-1. Upload the `dd-simple-photo-gallery` directory to the `/wp-content/plugins` directory.
-2. Activate the plugin through the plugins menu in WordPress.
-3. Use it :-)
+1. Download the plugins version
+2. Unzip the file and Upload the `dd-simple-photo-gallery` directory to the `/wp-content/plugins` directory.
+3. Activate the plugin through the plugins menu in WordPress.
+4. Use it :-)
 
-or 
-1. Upload the plugins .zip extension file dd-simple-photo-gallery.zip via plugins .zip uploader
-2. Activate the plugins 
-3. Use it :)
+
 
 
 == Frequently Asked Questions ==
