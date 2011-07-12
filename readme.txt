@@ -1,0 +1,88 @@
+=== DD Simple Photo Gallery ===
+Contributors: phpfarmer
+Donate link: http://www.dropndot.com/blog/dd-simple-photo-gallery-wordpress-plugin/
+Tags: photo,gallery,simple
+Requires at least: 2.8.4
+Tested up to: 2.8.4
+Stable tag: 1.0
+
+It is a very simple, fast and light weight wordpress plguins with gallery, photo and default settings management.
+
+== Description ==
+**I) Features:**
+
+* Manage multiple gallery with title and description fields for different pages or posts, and manage photos with some basic fields under each gallery and a some basic setings for manage gallery and photos.
+* Core features mainly (1. Manage gallery 2. Manage photos 3. Default settings etc)
+* It is extremely **simple to use**. But, if desired, **gallery thumbs are resizable through admin settings**. also large image size and slide speed are configurable
+
+
+**II) Usage:**
+
+Add below sampled code to show a gallery on any page or post. Then it's very simple:
+
+[DDSPG_Gallery id="1"]
+
+This example is to load a gallery which id is 1
+
+
+Full instructions explaining more options can be found on the [plugin's homepage](http://www.dropndot.com/blog/dd-simple-photo-gallery-wordpress-plugin/).
+
+**IV) How does it look in action?**
+
+Examples can be found on the [plugin's homepage](http://www.dropndot.com/blog/dd-simple-photo-gallery-wordpress-plugin-example/).
+
+**V) Issues:**
+
+It works for me. But this is still not much tested, so there are for sure some issues. **Please** let me know :-)
+Write a [comment](http://www.dropndot.com/blog/dd-simple-photo-gallery-wordpress-plugin/) or a [mail](mailto:tojibon@gmail.com).
+
+
+
+== Installation ==
+
+1. Upload the `dd-simple-photo-gallery` directory to the `/wp-content/plugins` directory.
+2. Activate the plugin through the plugins menu in WordPress.
+3. Use it :-)
+
+or 
+1. Upload the plugins .zip extension file dd-simple-photo-gallery.zip via plugins .zip uploader
+2. Activate the plugins 
+3. Use it :)
+
+
+== Frequently Asked Questions ==
+
+= Can I configure the large image width and height?  =
+
+Yes, You can configure the large image width and height in pixel.
+
+= Can I configure the thumb image width and height?  =
+
+Yes, You can configure the thumb image width and height in pixel.
+
+= Can I control the speed of slider?  =
+
+Yes, You can configure speed of slider using plugins default settings management.
+
+
+= Can I load multiple galleries in a single page or post?  =
+
+No, You can not load multiple galleries in a single page or single post or website home page.
+
+
+
+== Screenshots ==
+
+1. This screen shot DD simple photo gallery in action with default settings of gallery photos size 
+2. Galleries management 
+3. Photo management under each gallery
+4. Default settings management for plugins
+
+== Changelog ==
+
+
+= 1.0 =
+New released first fresh version 1.0.
+
+== Upgrade Notice ==
+Hopefully very soon I can release the upgraded version with auto load slider and other basic settings.
