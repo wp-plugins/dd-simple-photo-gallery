@@ -111,8 +111,8 @@ function dd_spg_display_gallery($atts) {
     if(!empty($gallery_data)){
         
         
-        $return_text = '<div id="slideshow">';
-        $return_text.='<ul class="slides">';
+        $return_text = '<div id="ddslideshow">';
+        $return_text.='<ul class="ddslides">';
             foreach($photo_data as $row){
 				$image = '<img src="'.BASE_URL.'/include/resize.php?src='.$row->photo.'&h='.$img_large_height.'&w='.$img_large_width.'&zc=1" alt="'.$row->description.'" title="'.$row->title.'" />';
                 $return_text.='<li>'.$image.'</li>';    

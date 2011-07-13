@@ -1,7 +1,7 @@
 jQuery(document).ready(function($) {
 	
 	//Animate gallery show
-	var slidesCon = $('.slides');
+	var slidesCon = $('.ddslides');
 	var thumbshow = $('#thumbshow'); 
 	var thumbWrap = $('#thumbwrap');
 	var thumbWrapWidth = $('#thumbwrap').width();
@@ -10,7 +10,7 @@ jQuery(document).ready(function($) {
 	var thumsSize = $('.thumbs li').size();
 	var imageCaption = $('#imgCaption');
 	
-	var slides = $('.slides li');
+	var slides = $('.ddslides li');
 	var prevbtn = $('.prevbtn');
 	var nextbtn = $('.nextbtn');
 	var navarrow = $('.navarrow');
