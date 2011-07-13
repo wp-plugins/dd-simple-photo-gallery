@@ -1,10 +1,10 @@
-#slideshow{
+#ddslideshow{
 	width:auto;	height:auto;	
 	margin-bottom:4px;
 	overflow:hidden;
 	position:relative;
 }
-#slideshow ul{
+#ddslideshow ul{
 	height:300px;
 	position:relative;
 	overflow:hidden;
@@ -12,7 +12,7 @@
 	padding:0;
 	list-style:none;
 }
-#slideshow ul li{
+#ddslideshow ul li{
 	margin:0; 
 	padding:0;
 	list-style:none;
@@ -21,7 +21,7 @@
 	border:1px solid #999;
 	padding:4px;
 }
-#slideshow ul li img{
+#ddslideshow ul li img{
 	display:block;
 	border:none;
 }
