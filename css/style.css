@@ -1,10 +1,10 @@
-#ddslideshow{
+#slideshow{
 	width:auto;	height:auto;	
 	margin-bottom:4px;
 	overflow:hidden;
 	position:relative;
 }
-#ddslideshow ul{
+#slideshow ul{
 	height:300px;
 	position:relative;
 	overflow:hidden;
@@ -12,7 +12,7 @@
 	padding:0;
 	list-style:none;
 }
-#ddslideshow ul li{
+#slideshow ul li{
 	margin:0; 
 	padding:0;
 	list-style:none;
@@ -21,7 +21,7 @@
 	border:1px solid #999;
 	padding:4px;
 }
-#ddslideshow ul li img{
+#slideshow ul li img{
 	display:block;
 	border:none;
 }
@@ -41,11 +41,6 @@
 #thumbwrap ul{
 	width:auto;	height:auto;
 	position:absolute;
-    
-    margin:0;
-    padding:0;
-    list-style:none;
-
 }
 #thumbwrap ul li{
 	margin:0; 
