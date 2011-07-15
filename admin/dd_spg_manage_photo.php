@@ -1,18 +1,4 @@
 <?php
-/*
-Plugin Name: DD Simple Photo Gallery
-Plugin URI: http://www.dropndot.com/blog/dd-simple-photo-gallery-wordpress-plugin/
-Description: DD Simple Photo Gallery is a simple, fast and light plugin to create a gallery of your custom uploaded gallery wise photos on your WordPress enabled website.  This plugin aims at providing a simple yet customizable way to create, manage gallery and upload photos under custom gallery.
-Version: 1.0
-Author: phpfarmer(Jewel Ahmed)
-Author URI: http://www.phpfarmer.com
-License: GPL2
-Release Date: 10-Jul-2011
-
-Copyright 2011 Jewel Ahmed (email : jewel@dropndot.com)
-
-Filename: dd_spg_manage_photo.php
-*/
 
     $url=$_SERVER['REQUEST_URI'];
     $page='dd_spg_manage_photo'; //Used to create this page link like back, no thanks, edit and delte
@@ -147,10 +133,10 @@ Filename: dd_spg_manage_photo.php
     if(!empty($_REQUEST['action']) && 'delete'==$_REQUEST['action']){
         if(!empty($_REQUEST['id'])){
             if(!empty($_POST['submit'])){
-                $sql="select photo from ".$table_photo." where id='".$_GET['id']."'";
+                $sql="select photo from ".$table_photo." where id='".$_REQUEST['id']."'";
                 $data=$wpdb->get_row($sql);
                 
-                $sql="delete from ".$table_name." where id='".$_GET['id']."'";
+                $sql="delete from ".$table_name." where id='".$_REQUEST['id']."'";
                 if($wpdb->query($sql)){
                     $msg ='Photo has been deleted successfully!';
                     @unlink($data->photo);  //Deleting photo from directory
