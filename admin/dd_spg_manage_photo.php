@@ -136,7 +136,7 @@
                 $sql="select photo from ".$table_photo." where id='".$_REQUEST['id']."'";
                 $data=$wpdb->get_row($sql);
                 
-                $sql="delete from ".$table_name." where id='".$_REQUEST['id']."'";
+                $sql="delete from ".$table_photo." where id='".$_REQUEST['id']."'";
                 if($wpdb->query($sql)){
                     $msg ='Photo has been deleted successfully!';
                     @unlink($data->photo);  //Deleting photo from directory
