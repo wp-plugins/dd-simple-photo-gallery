@@ -89,19 +89,19 @@ jQuery(document).ready(function($) {
 	
 	var sliderLeftPos = 0;
 	
-	//Thumbnail Previous navigate
-	prevbtn.click(function(){
+	//Thumbnail next navigate
+	nextbtn.click(function(){
 		if(sliderLeftPos>-(thumbActualWidh -(largeConWidth-thumbNavWidth))){
-		sliderLeftPos = sliderLeftPos - thumbsWidth;		
+		sliderLeftPos = sliderLeftPos - (largeConWidth-thumbNavWidth);		
 		thumb.animate({left:sliderLeftPos},slideSpeed*1);
 		}
 	});
 	
 	
-	//Thumbnail Next navigate
-	nextbtn.click(function(){		
+	//Thumbnail prevbtn navigate
+	prevbtn.click(function(){		
 		if(sliderLeftPos!=0){
-		sliderLeftPos = sliderLeftPos + thumbsWidth;		
+		sliderLeftPos = sliderLeftPos + (largeConWidth-thumbNavWidth);		
 		thumb.animate({left:sliderLeftPos},slideSpeed*1);
 		}
 	});
