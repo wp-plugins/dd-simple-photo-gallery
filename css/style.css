@@ -24,6 +24,7 @@
 #ddslideshow ul li img{
 	display:block;
 	border:none;
+    max-width:none;
 }
 #thumbshow{
 	overflow:hidden;
