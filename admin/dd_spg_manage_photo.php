@@ -1,5 +1,4 @@
 <?php
-
     $url=$_SERVER['REQUEST_URI'];
     $page='dd_spg_manage_photo'; //Used to create this page link like back, no thanks, edit and delte
     
