@@ -56,7 +56,7 @@
 	float:left;
 	cursor:pointer;
 	border:none;
-    max-width:auto;
+    max-width:none;
 }
 .navarrow{
 	display:block;
