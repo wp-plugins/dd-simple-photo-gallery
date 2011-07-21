@@ -1,5 +1,5 @@
 === DD Simple Photo Gallery ===
-Contributors: phpfarmer
+Contributors: phpfarmer,markupgeek
 Donate link: http://www.dropndot.com/blog/wordpress/dd-simple-photo-gallery-wordpress-plugin/
 Tags: photo,gallery,simple
 Requires at least: 2.8.4
