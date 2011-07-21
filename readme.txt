@@ -11,9 +11,14 @@ It is a very simple, fast and light weight wordpress plguins with gallery, photo
 == Description ==
 **I) Features:**
 
-* Manage multiple gallery with title and description fields for different pages or posts, and manage photos with some basic fields under each gallery and a some basic setings for manage gallery and photos.
-* Core features mainly (1. Manage gallery 2. Manage photos 3. Default settings etc)
-* It is extremely **simple to use**. But, if desired, **gallery thumbs are resizable through admin settings**. also large image size and slide speed are configurable
+* Simple gallery management with title and description for pages or posts
+* Photo management with some basic information 
+* Basic settings for gallery and photos.
+* Core features - 
+1. Manage gallery 
+2. Manage photos 
+3. Default settings etc
+* It's extremely **easy to use**. But, if desired, **gallery thumbs are resizable through admin settings**. also large image size and slide speed are configurable
 
 
 **II) Usage:**
@@ -21,10 +26,10 @@ It is a very simple, fast and light weight wordpress plguins with gallery, photo
 1. Create a gallery
 2. Add some photos on this gallery
 3. Copy the gallery code from gallery listing page Example: [DDSPG_Gallery id="1"]
-4. past the code on your wordpress page or post
-5. adjust the settings using default settings admin page
-6. that's it (This example is to load a gallery which id is 1)
-7. Finally please check the directory "cache" file write permission wp-content\plugins\dd-simple-photo-gallery\include\cache is it writable or not? Make this "cache" folder write permission 0777
+4. Put the gallery code on your desired wordpress page or post
+5. Adjust the settings using default settings
+6. That's it (This example is to load a gallery which id is 1)
+7. Finally please check the directory "cache" file write permission wp-content/plugins/dd-simple-photo-gallery/include/cache is it writable or not? Make this "cache" folder write permission 0777
 
 Full instructions explaining more options can be found on the [plugin's homepage](http://www.dropndot.com/blog/wordpress/dd-simple-photo-gallery-wordpress-plugin/).
 
