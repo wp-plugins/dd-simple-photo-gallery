@@ -92,7 +92,8 @@ jQuery(document).ready(function($) {
 	//Thumbnail next navigate
 	nextbtn.click(function(){
 		if(sliderLeftPos>-(thumbActualWidh -(largeConWidth-thumbNavWidth))){
-		sliderLeftPos = sliderLeftPos - (largeConWidth-thumbNavWidth);		
+        //sliderLeftPos = sliderLeftPos - (largeConWidth-thumbNavWidth);        
+		sliderLeftPos = sliderLeftPos - thumbsWidth;		
 		thumb.animate({left:sliderLeftPos},slideSpeed*1);
 		}
 	});
@@ -101,7 +102,8 @@ jQuery(document).ready(function($) {
 	//Thumbnail prevbtn navigate
 	prevbtn.click(function(){		
 		if(sliderLeftPos!=0){
-		sliderLeftPos = sliderLeftPos + (largeConWidth-thumbNavWidth);		
+        //sliderLeftPos = sliderLeftPos + (largeConWidth-thumbNavWidth);        
+		sliderLeftPos = sliderLeftPos + thumbsWidth;		
 		thumb.animate({left:sliderLeftPos},slideSpeed*1);
 		}
 	});
