@@ -104,7 +104,7 @@ function dd_spg_display_gallery($atts) {
     
     
     
-    $sql="select * from ".$table_photo." where gallery_id='".$id."'";
+    $sql="select * from ".$table_photo." where gallery_id='".$id."' order by ordering";
     $photo_data = $wpdb->get_results($sql);
     
     
