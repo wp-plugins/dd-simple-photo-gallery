@@ -75,7 +75,7 @@ Yes, You can configure speed of slider using plugins default settings management
 
 == Changelog ==
 
-= 2.0 =
+= 1.1 =
 Removed Timthumb and added around 40 sliding effect!
 Supoort multiple gallery in a single page or post!
 
