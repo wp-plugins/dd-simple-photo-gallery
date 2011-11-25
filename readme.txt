@@ -4,7 +4,7 @@ Donate link: http://www.dropndot.com/blog/wordpress/dd-simple-photo-gallery-word
 Tags: photo,gallery,simple
 Requires at least: 2.8.4
 Tested up to: 3.1.3
-Stable tag: 2.0
+Stable tag: 1.1
 
 It is a very simple, fast and light weight wordpress plguins with gallery, photo and default settings management.
 
