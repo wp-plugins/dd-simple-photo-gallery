@@ -56,7 +56,8 @@ function dd_spg_settings() {
     if (!current_user_can('manage_options'))  {
         wp_die( __('You do not have sufficient permissions to access this page.') );
     }
-    
+    global $wpdb;
+    $table_photo = $wpdb->prefix . "dd_spg_photos";
     include('dd_spg_settings.php');
 }
 

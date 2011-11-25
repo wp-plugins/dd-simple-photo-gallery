@@ -3,7 +3,7 @@
 Plugin Name: DD Simple Photo Gallery
 Plugin URI: http://www.dropndot.com/blog/wordpress/dd-simple-photo-gallery-wordpress-plugin/
 Description: DD Simple Photo Gallery is a free, simple, fast and light weight wordpress  plugin to create photo gallery for your wordpress enabled website.
-Version: 1.0
+Version: 1.1
 Author: Jewel Ahmed
 Author URI: http://www.phpfarmer.com
 License: GPL2
@@ -56,7 +56,9 @@ if ( is_admin() ) {
 //Loading dd simple photo gallery required javascript files
 function enqueue_dd_spg_scripts() {
     wp_enqueue_script('jquery');
-    wp_enqueue_script('enqueue_dd_spg_script', BASE_URL . "/js/slide_script.js");
+    wp_enqueue_script('enqueue_dd_spg_script1', BASE_URL . "/js/jquery-1.7.min.js");
+    wp_enqueue_script('enqueue_dd_spg_script2', BASE_URL . "/js/jquery.effects.core.js");
+    wp_enqueue_script('enqueue_dd_spg_script3', BASE_URL . "/js/jquery.ssslider.v1.0.min.js");
 }
 
 //Loading dd simple photo gallery required css files
@@ -78,15 +80,16 @@ function dd_spg_display_gallery($atts) {
 	
 	//Initializing thumbnail width height
     $img_thumb_size = explode('x', strtolower(trim($option_data->dd_spg_thumb_size)));  //width x height
-    $thumb_width = ($img_thumb_size[0])?$img_thumb_size[0]:120;    //Calculating thumbnail width
-    $thumb_height = ($img_thumb_size[1])?$img_thumb_size[1]:100;   //Calculating thumbnail height
+    $thumb_width = ($img_thumb_size[0])?$img_thumb_size[0]:80;    //Calculating thumbnail width
+    $thumb_height = ($img_thumb_size[1])?$img_thumb_size[1]:60;   //Calculating thumbnail height
      
     //Initializing large width height
     $img_large_size = explode('x', strtolower(trim($option_data->dd_spg_large_size)));  //height x width
-    $img_large_width = ($img_large_size[0])?$img_large_size[0]:120;    //Calculating large image width
-    $img_large_height = ($img_large_size[1])?$img_large_size[1]:100;   //Calculating large image height
+    $img_large_width = ($img_large_size[0])?$img_large_size[0]:400;    //Calculating large image width
+    $img_large_height = ($img_large_size[1])?$img_large_size[1]:300;   //Calculating large image height
     
-    
+    $extra = strtolower($img_large_width . 'x' . $img_large_height);
+    $extra_replace = strtolower($thumb_width . 'x' . $thumb_height);
     
     
     extract( shortcode_atts( array(
@@ -104,60 +107,93 @@ function dd_spg_display_gallery($atts) {
     
     
     
-    $sql="select * from ".$table_photo." where gallery_id='".$id."' order by ordering";
+    $sql="select * from ".$table_photo." where gallery_id='".$id."'";
     $photo_data = $wpdb->get_results($sql);
     
     
     if(!empty($gallery_data)){
         
-        
-        $return_text = '<div id="ddslideshow">';
-        $return_text.='<ul class="ddslides">';
+        $return_text = '<div id="slider_'.$id.'" class="sssSlider">';
             foreach($photo_data as $row){
-				$image = '<img src="'.BASE_URL.'/include/resize.php?src='.$row->photo.'&h='.$img_large_height.'&w='.$img_large_width.'&zc=1" alt="'.$row->description.'" title="'.$row->title.'" />';
-                $return_text.='<li>'.$image.'</li>';    
+                $img = $row->photo;
+                
+                $wp_filetype = wp_check_filetype(basename($img), null );
+                $ext = '.' . $wp_filetype['ext'];
+                $img = str_replace($ext, '-' . $img_large_width . 'x' . $img_large_height . $ext, $img);
+                
+                $image = '<img src="'.$img.'" alt="'.$row->title.'" title="'.$row->description.'" />';
+                $return_text.=$image;    
             }
-        $return_text.='</ul>';
-		if($dd_spg_is_display_title_and_des=='yes'){
-        $return_text.='<div id="imgCaption"><h4></h4>';
-		$return_text.='<p></p></div>';
-		?>
-		<script language="javascript" type="text/javascript">
-			var displayImageInfo = true;	
-		</script>
-		<?php
-		}else{
-		?>
-		<script language="javascript" type="text/javascript">
-			var displayImageInfo = false;	
-		</script>
-		<?php	
-		
-		}?>
-		<script language="javascript" type="text/javascript">
-			var slideSpeed = '<?php echo $dd_spg_slide_speed; ?>';
-			var largeImageWidth = '<?php echo $img_large_width; ?>';
-			var largeImageHeight = '<?php echo $img_large_height; ?>';
-			var thumbImageWidth = '<?php echo $thumb_width; ?>';
-			var thumbImageHeight = '<?php echo $thumb_height; ?>';
-		</script>
-		<?php 
-        $return_text.='<span class="arrow previous"></span><span class="arrow next"></span></div>';		
-		
-		$return_text.= '<div id="thumbshow">';
-		$return_text.= '<div id="thumbwrap">';
-        $return_text.='<ul class="thumbs">';
-            foreach($photo_data as $row){
-                $image = '<img src="'.BASE_URL.'/include/resize.php?src='.$row->photo.'&h='.$thumb_height.'&w='.$thumb_width.'&zc=1" alt="'.$row->description.'" title="'.$row->title.'" />';
-                $return_text.='<li>'.$image.'</li>';    
-            }
-        $return_text.='</ul></div>';
-       
-        $return_text.='<span class="navarrow prevbtn"></span><span class="navarrow nextbtn"></span></div>';
-		
-    
-        return $return_text;
+        $return_text.='</div>';
+
         
+        
+        echo $return_text;
+        ?>
+        <script type="text/javascript">
+$(window).load(function() {               
+    $('#slider_<?=$id?>').ssSlider({
+        effect: 'random',
+        slices: 15,
+        boxCols: 8,
+        boxRows: 4,
+        slideSpeed: 500,
+        pauseTime: 5000,
+        largeNavArrow: true,
+        largeNavArrowDefaultHidden: true,
+        
+        pauseOnHover: true,
+        manualAdvance: false,
+        prevText: 'Prev',
+        nextText: 'Next',
+        keyboardNav: true,
+        
+        displayGalleryCaption: '<?=$dd_spg_is_display_title_and_des?>',
+        
+        
+        controlNav: true,
+        controlNavThumbs: true,
+        controlNavThumbsWidth: '<?=$thumb_width?>',
+        controlNavThumbsHeight: '<?=$thumb_height?>',
+        controlNavThumbsSearch: '<?=$extra?>',
+        controlNavThumbsReplace: '<?=$extra_replace?>',
+        
+        
+        
+        captionOpacity: 0.6,
+        
+        
+        defaultEffects: new Array(
+                    
+                    'sliceDownRight',
+                    'sliceDownLeft',
+                    'sliceDownRandom',
+                    
+                    'sliceUpRight',
+                    'sliceUpLeft',
+                    'sliceUpRandom',
+                    
+                    'sliceUpDownRight',
+                    'sliceUpDownLeft',
+                    'sliceUpDownRandom',
+                    
+                    'slide2Right',
+                    'slide2Left',  
+                    
+                    'slice2Right',
+                    'slice2Left'
+                      
+        ),
+        beforeChange: function(){},
+        afterChange: function(){},
+        slideshowEnd: function(){},
+        lastSlide: function(){},
+        afterLoad: function(){}
+    });
+   
+});
+</script>
+        <?php 
         
     } else {
         return false;
@@ -171,11 +207,15 @@ function dd_spg_display_gallery($atts) {
 register_activation_hook(__FILE__,'dd_spg_install');
 register_activation_hook(__FILE__,'dd_spg_install_options');
 
+
+
+
 //creating galleries database table when activating the plugins
 function dd_spg_install() {
    global $wpdb;
    $table_galleries = $wpdb->prefix . "dd_spg_galleries";
    $table_photos = $wpdb->prefix . "dd_spg_photos";
+   
    
   if ($wpdb->get_var("SHOW TABLES LIKE '$table_galleries'") != $table_galleries) {
         //Creating database galleries table for dd simple photo gallery    
@@ -230,4 +270,11 @@ function dd_spg_install_options(){
     
     if(!get_option('dd_sfg_db_version'))
         add_option("dd_sfg_db_version", VERSION, '', 'no');     // plugins database verions 1.0
+        
+    //Updating gallery version    
+    $installed_ver = get_option( "dd_sfg_db_version" );
+    if( $installed_ver != VERSION ) {
+      update_option( "dd_sfg_db_version", VERSION );
+    }
+    
 }

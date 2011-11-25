@@ -1,24 +1,19 @@
 === DD Simple Photo Gallery ===
-Contributors: phpfarmer,markupgeek
+Contributors: phpfarmer
 Donate link: http://www.dropndot.com/blog/wordpress/dd-simple-photo-gallery-wordpress-plugin/
 Tags: photo,gallery,simple
 Requires at least: 2.8.4
-Tested up to: 2.8.4
-Stable tag: 1.0
+Tested up to: 3.1.3
+Stable tag: 2.0
 
 It is a very simple, fast and light weight wordpress plguins with gallery, photo and default settings management.
 
 == Description ==
 **I) Features:**
 
-* Simple gallery management with title and description for pages or posts
-* Photo management with some basic information 
-* Basic settings for gallery and photos.
-* Core features - 
-1. Manage gallery 
-2. Manage photos 
-3. Default settings etc
-* It's extremely **easy to use**. But, if desired, **gallery thumbs are resizable through admin settings**. also large image size and slide speed are configurable
+* Manage multiple gallery with title and description fields for different pages or posts, and manage photos with some basic fields under each gallery and a some basic setings for manage gallery and photos.
+* Core features mainly (1. Manage gallery 2. Manage photos 3. Default settings etc)
+* It is extremely **simple to use**. But, if desired, **gallery thumbs are resizable through admin settings**. also large image size and slide speed are configurable
 
 
 **II) Usage:**
@@ -26,10 +21,10 @@ It is a very simple, fast and light weight wordpress plguins with gallery, photo
 1. Create a gallery
 2. Add some photos on this gallery
 3. Copy the gallery code from gallery listing page Example: [DDSPG_Gallery id="1"]
-4. Put the gallery code on your desired wordpress page or post
-5. Adjust the settings using default settings
-6. That's it (This example is to load a gallery which id is 1)
-7. Finally please check the directory "cache" file write permission wp-content/plugins/dd-simple-photo-gallery/include/cache is it writable or not? Make this "cache" folder write permission 0777
+4. past the code on your wordpress page or post
+5. adjust the settings using default settings admin page
+6. that's it (This example is to load a gallery which id is 1)
+7. Finally please check the directory "cache" file write permission wp-content\plugins\dd-simple-photo-gallery\include\cache is it writable or not? Make this "cache" folder write permission 0777
 
 Full instructions explaining more options can be found on the [plugin's homepage](http://www.dropndot.com/blog/wordpress/dd-simple-photo-gallery-wordpress-plugin/).
 
@@ -40,7 +35,7 @@ Examples can be found on the [plugin's example page](http://www.dropndot.com/blo
 **V) Issues:**
 
 It works for me. But this is still not much tested, so there are for sure some issues. **Please** let me know :-)
-Write a [comment](http://www.dropndot.com/blog/wordpress/dd-simple-photo-gallery-wordpress-plugin/) or a [mail](mailto:tojibon@gmail.com).
+Write a [comment](http://www.dropndot.com/blog/wordpress/dd-simple-photo-gallery-wordpress-plugin/).
 
 
 
@@ -69,10 +64,6 @@ Yes, You can configure the thumb image width and height in pixel.
 Yes, You can configure speed of slider using plugins default settings management.
 
 
-= Can I load multiple galleries in a single page or post?  =
-
-No, You can not load multiple galleries in a single page or single post or website home page.
-
 
 
 == Screenshots ==
@@ -84,6 +75,9 @@ No, You can not load multiple galleries in a single page or single post or websi
 
 == Changelog ==
 
+= 2.0 =
+Removed Timthumb and added around 40 sliding effect!
+Supoort multiple gallery in a single page or post!
 
 = 1.0 =
 New released first fresh version 1.0.

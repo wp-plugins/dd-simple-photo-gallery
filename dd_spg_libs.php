@@ -30,7 +30,7 @@ define('SITE_URL', get_option('siteurl'));
 * @var float
 * @access public
 */
-define('VERSION', '1.0');
+define('VERSION', '2.0');
 
 /**
 * public constant for plugins details or support url

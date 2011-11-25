@@ -1,9 +1,25 @@
 <?php
+
+
     $url=$_SERVER['REQUEST_URI'];
     $page='dd_spg_manage_photo'; //Used to create this page link like back, no thanks, edit and delte
     
     $allowed_file_types = array('.jpg','.gif','.png');
     $max_file_size = 5000000;
+     
+     
+    $return_options_data=dd_spg_get_all_options();
+    $option_data = (object) $return_options_data;
+    
+    //Initializing thumbnail width height
+    $img_thumb_size = explode('x', strtolower(trim($option_data->dd_spg_thumb_size)));  //width x height
+    $thumb_width = ($img_thumb_size[0])?$img_thumb_size[0]:80;    //Calculating thumbnail width
+    $thumb_height = ($img_thumb_size[1])?$img_thumb_size[1]:60;   //Calculating thumbnail height
+     
+    //Initializing large width height
+    $img_large_size = explode('x', strtolower(trim($option_data->dd_spg_large_size)));  //height x width
+    $img_large_width = ($img_large_size[0])?$img_large_size[0]:400;    //Calculating large image width
+    $img_large_height = ($img_large_size[1])?$img_large_size[1]:300;   //Calculating large image height
      
     
     $sql="select id,title from ".$table_gallery.' ORDER by title';
@@ -63,6 +79,14 @@
                 
                 
                 if($wpdb->query($sql)){
+                    
+                    if(!empty($upload['url'])){
+                        $img = '..' . substr($upload['url'], strpos($upload['url'], '/wp-content'));
+                        $thumb = image_resize($img,$thumb_width,$thumb_height,true);    
+                        $thumb = image_resize($img,$img_large_width,$img_large_height,true);    
+                    }
+                    
+                    
                     $msg ='Photo information has been updated successfully!';
                 } else {
                     $err ='Sorry, Can not update photo information.';
@@ -118,6 +142,12 @@
                 updated=concat(CURDATE()," ",CURTIME())
                 ';
                 if($wpdb->query($sql)){
+                    if(!empty($upload['url'])){
+                        $img = '..' . substr($upload['url'], strpos($upload['url'], '/wp-content'));
+                        $thumb = image_resize($img,$thumb_width,$thumb_height,true);    
+                        $thumb = image_resize($img,$img_large_width,$img_large_height,true);    
+                    }
+                    
                     $msg ='Photo information has been saved successfully!';
                 } else {
                     $err ='Sorry, Can not add new photo information.';
@@ -132,10 +162,10 @@
     if(!empty($_REQUEST['action']) && 'delete'==$_REQUEST['action']){
         if(!empty($_REQUEST['id'])){
             if(!empty($_POST['submit'])){
-                $sql="select photo from ".$table_photo." where id='".$_REQUEST['id']."'";
+                $sql="select photo from ".$table_photo." where id='".$_GET['id']."'";
                 $data=$wpdb->get_row($sql);
                 
-                $sql="delete from ".$table_photo." where id='".$_REQUEST['id']."'";
+                $sql="delete from ".$table_photo." where id='".$_GET['id']."'";
                 if($wpdb->query($sql)){
                     $msg ='Photo has been deleted successfully!';
                     @unlink($data->photo);  //Deleting photo from directory
@@ -236,9 +266,14 @@ echo (BASE_URL . '/admin/images/logo_big.png'); ?>" align='center'/></a>Manage P
                 
                 <?php 
                 if(!empty($old->photo)){
+                    $img = $old->photo;
+                    $wp_filetype = wp_check_filetype(basename($img), null );
+                    $ext = '.' . $wp_filetype['ext'];
+                    $img = str_replace($ext, '-' . $thumb_width . 'x' . $thumb_height . $ext, $img);
+                    
                 ?>
                     <br />
-                    <img src="<?=BASE_URL?>/include/resize.php?src=<?=$old->photo?>&h=100&w=100&zc=1" />
+                    <img src="<?=$img?>" />
                 <?php 
                 }
                 ?>
@@ -333,8 +368,12 @@ echo (BASE_URL . '/admin/images/logo_big.png'); ?>" align='center'/></a>Manage P
                     <td style="vertical-align: middle;">
                     <?php 
                     if(!empty($row->photo)){
+                        $img = $row->photo;
+                        $wp_filetype = wp_check_filetype(basename($img), null );
+                        $ext = '.' . $wp_filetype['ext'];
+                        $img = str_replace($ext, '-' . $thumb_width . 'x' . $thumb_height . $ext, $img);
                     ?>
-                        <img src="<?=BASE_URL?>/include/resize.php?src=<?=$row->photo?>&h=50&w=50&zc=1" />
+                        <img src="<?=$img?>" />
                     <?php 
                     }
                     ?></td>

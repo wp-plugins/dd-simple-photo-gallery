@@ -1,101 +1,168 @@
+*{
 
-#ddslideshow{
-	width:auto;	height:auto;	
-	margin-bottom:4px;
-	overflow:hidden;
-	position:relative;
+    border:0;
+    margin: 0;
+    padding: 0;
+
 }
-#ddslideshow ul{
-	height:300px;
-	position:relative;
-	overflow:hidden;
-	margin:0; 
-	padding:0;
-	list-style:none;
+
+body{
+    padding-top: 10px;
+    background: #141518;
 }
-#ddslideshow ul li{
-	margin:0; 
-	padding:0;
-	list-style:none;
-	position:absolute;
-	top:0; left:0;
-	border:1px solid #999;
-	padding:4px;
+
+.wrapper{
+    
+    width:auto;
+    display: block;
+    margin: 0 auto;
+    border: 0px solid #d3d3d3;
+    /*overflow: hidden;   */
 }
-#ddslideshow ul li img{
+ 
+    
+    
+.sliderWapper{
+	border: 20px solid #d3d3d3;
+	margin:0 auto;
 	display:block;
-	border:none;
-    max-width:none;
-}
-#thumbshow{
+	margin-bottom:10px;
+	clear:both;
 	overflow:hidden;
-	border:1px solid #999;
-	overflow:hidden;
-	width:auto	height:auto;
-	padding:4px;
-	position:relative;
 }
-#thumbwrap{
-	width:auto;	height:86px;
-	margin-left:32px;
-	position:relative;
+    
+  
+.sssSlider {
+    position:relative;
+	margin: 0 auto;
 }
-#thumbwrap ul{
-	width:auto;	height:auto;
-	position:absolute;
-    margin:0px;
+
+.sssSlider img {
+    position:absolute;
+    top:0px;
+    left:0px;
 }
-#thumbwrap ul li{
-	margin:0; 
-	padding:0;
-	list-style:none;
-	float:left;
-	border:1px solid #CCC;
-	padding:2px;
-	margin-right:5px;
+  
+/* The slices and boxes in the Slider */
+.sss-slice {
+    display:block;
+    position:absolute;
+    z-index:5;
+    /*border: 1px solid #F00;*/
 }
-#thumbwrap ul li img{
-	float:left;
-	cursor:pointer;
-	border:none;
-    max-width:none;
+.sss-box {
+    display:block;
+    position:absolute;
+    z-index:5;
+}  
+        
+
+        
+/*Others option settings control css*/        
+.sssLargeNav a {
+    position:absolute;
+    bottom:25px;
+    z-index:9;
+    cursor:pointer;
 }
-.navarrow{
-	display:block;
-	position:absolute;
-	width:32px;	height:100%;
-	background:#000;
-	overflow:hidden;
-	z-index:1;
-	cursor:pointer;
-	background:url(img/thumnavbtns.gif) no-repeat;
+.sssPre {
+  background-image:url(./images/sssIcons.png);
+  background-position:-2px -3px;
+  cursor:pointer;
+  height:17px;
+  left:20px;
+  position:absolute;
+  width:13px;
+  text-indent: -9999px;                   
 }
-.prevbtn{
-	left:0;
-	top:0;
-	background:url(img/thumnavbtns.gif) no-repeat 0 center;
+.sssNext {
+  background-image:url(./images/sssIcons.png);
+  background-position:-20px -3px;
+  bottom:126px;
+  cursor:pointer;
+  height:17px;
+  position:absolute;
+  right:20px;
+  width:13px;
+  text-indent: -9999px;
 }
-.nextbtn{
-	right:0;
-	top:0;
-	background:url(img/thumnavbtns.gif) no-repeat -32px center;
+
+.sssNext, .sssPre{
+  position:absolute;
+  top:45%;
 }
-#imgCaption{
-	position:absolute;
-	left:0; bottom:0;
-	padding:10px;
-	background:url(img/black-shadow.png) repeat;
-	height:auto;
+
+.sssPre:hover {
+  background-position:-2px -23px;
 }
-#imgCaption h4{
-	font:bold 14px/15px Arial;
-	margin-bottom:5px;
-	color:#fff;
-}
-#imgCaption p{
-	font:normal 12px/16px Arial;
-	color:#fff;
-	margin-bottom:0;
+.sssNext:hover {
+  background-position:-20px -23px;
 }
 
 
+/* Caption styles */
+.sss-caption {
+    position: absolute;
+    bottom:0px;
+    opacity:0.7; /* Overridden by captionOpacity setting */
+    width:100%;
+    z-index:8;
+    padding: 5px 0;
+    height: 60px;
+    border: 0px solid #F00;
+    text-align: left;
+    background: #d3d3d3;
+}
+
+.sss-caption p, .sss-caption p a{
+    font-family: Tahoma, Helvetica, sans-serif;
+    color: #3F4146;
+    font-size: 12px;
+}
+
+.sss-controlNav a {
+    position:relative;
+    z-index:9;
+    cursor:pointer;
+}
+.sss-controlNav a.active {
+    font-weight:bold;
+}
+
+
+.sss-caption p {
+    padding:5px;
+    margin:0;
+}
+.sss-caption a {
+    display:inline !important;
+}
+.sss-html-caption {
+    display:none;
+}
+
+.sss-controlNav{
+    border-top: 20px solid #d3d3d3;
+     background : #d3d3d3;
+}
+
+
+.sss-thumb-inner a{
+    
+}
+
+.sss-thumb-inner a:last-child{
+    border-right: 0;
+}
+.sss-thumb-inner a img{    
+    
+    opacity:0.7;
+}
+
+.sss-controlNav a.active img, .sss-controlNav a:hover img{
+    opacity:1;
+}
+
+
+/*.sss-thumb-inner a { overflow: hidden; position: relative; } 
+.sss-thumb-inner a img { position: absolute; }*/

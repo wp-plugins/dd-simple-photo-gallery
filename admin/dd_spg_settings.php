@@ -1,14 +1,53 @@
 <?php
+
+
     $url=$_SERVER['REQUEST_URI'];
     $page='dd_spg_manage_photo'; //Used to create this page link like back, no thanks, edit and delte
     
     if(!empty($_POST['submit'])){
 		update_option('dd_spg_slide_speed', $_POST['dd_spg_slide_speed']);
         update_option('dd_spg_is_display_title_and_des', $_POST['dd_spg_is_display_title_and_des']);
+        
+        if(empty($_POST['dd_spg_thumb_size']))
+            $_POST['dd_spg_thumb_size']='80x60';
+            
+        $_POST['dd_spg_thumb_size'] = strtolower($_POST['dd_spg_thumb_size']);    
         update_option('dd_spg_thumb_size', $_POST['dd_spg_thumb_size']);
+        
+        
+        if(empty($_POST['dd_spg_large_size']))
+            $_POST['dd_spg_large_size']='400x300';
+        
+        $_POST['dd_spg_large_size'] = strtolower($_POST['dd_spg_large_size']);
         update_option('dd_spg_large_size', $_POST['dd_spg_large_size']);
         
-        $msg = 'Your gallery settings has been updated successfully.';
+        
+        $thumb_size = explode('x', $_POST['dd_spg_thumb_size']);
+        $width = !empty($thumb_size[0])?$thumb_size[0]:80;
+        $height = !empty($thumb_size[1])?$thumb_size[1]:60;
+            
+        $large_thumb_size = explode('x', $_POST['dd_spg_large_size']);
+        $large_width = !empty($large_thumb_size[0])?$large_thumb_size[0]:400;
+        $large_height = !empty($large_thumb_size[1])?$large_thumb_size[1]:300;
+            
+        
+        $msg = '';   
+        $sql="select * from ".$table_photo;
+        $photo_data = $wpdb->get_results($sql);
+        
+        if(!empty($photo_data)){
+            foreach($photo_data as $row){
+                $img = '..' . substr($row->photo, strpos($row->photo, '/wp-content'));
+                $thumb = image_resize($img,$width,$height,true);
+                
+                $large_thumb = image_resize($img,$large_width,$large_height,true);
+                
+                
+            }
+        }
+        
+        
+        $msg.= 'Your gallery settings has been updated successfully.';
     }
     
     $return_options_data=dd_spg_get_all_options();
