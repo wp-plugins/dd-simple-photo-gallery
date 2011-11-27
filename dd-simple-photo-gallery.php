@@ -154,6 +154,10 @@ $(window).load(function() {
         controlNav: true,
         controlNavThumbs: true,
         controlNavThumbsWidth: '<?=$thumb_width?>',
+        
+        largeImageHeight: '<?=$img_large_height?>',
+        largeImageWidth: '<?=$img_large_width?>',
+        
         controlNavThumbsHeight: '<?=$thumb_height?>',
         controlNavThumbsSearch: '<?=$extra?>',
         controlNavThumbsReplace: '<?=$extra_replace?>',
