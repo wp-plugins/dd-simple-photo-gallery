@@ -1,4 +1,6 @@
 <?php
+
+
     $url=$_SERVER['REQUEST_URI'];
     $page='dd_spg_manage_gallery';  //Used to create this page link like back, no thanks, edit and delte
     $photo_page='dd_spg_manage_photo'; //Used to create this page link like back, no thanks, edit and delte
@@ -102,7 +104,7 @@
 ?>
 <div class='wrap'>
 <h2><a href='<?=PLUGINS_WEBSITE?>'><img src="<?php
-echo (BASE_URL . '/admin/images/logo_big.png'); ?>" align='center'/></a>Manage Galleries | DD Simple Photo Gallery</h2>
+echo (DD_SFG_BASE_URL . '/admin/images/logo_big.png'); ?>" align='center'/></a>Manage Galleries | DD Simple Photo Gallery</h2>
 
 
 <?php if (!empty($msg)) { ?>
@@ -249,9 +251,28 @@ echo (BASE_URL . '/admin/images/logo_big.png'); ?>" align='center'/></a>Manage G
 
 
 
-<div class="postbox-container" style="width: 29%;">
+<div class="postbox-container" style="width: 29%; margin-left: 10px;">
 <?php
+
+$additional_parameters_string = "effect='random' 
+        slices='18' 
+        boxcols='8' 
+        boxrows='4' 
+        slidespeed='500' 
+        pausetime='5000' 
+        largenavarrow='true' 
+        largenavarrowdefaulthidden='true' 
+        pauseonhover='true' 
+        manualadvance='false' 
+        prevtext='Prev'
+        nexttext='Next' 
+        keyboardnav='true'
+        displaygallerycaption='false' 
+        controlnav='true' 
+        controlnavthumbs='true' 
+        captionopacity='0.6'";
+
 echo dd_spg_current_settings_box();
-echo dd_spg_box('Usage Instructions', 'Insert the Gallery Code in any of your posts or pages to display your Custom Gallery.');
+echo dd_spg_box('Usage Instructions', 'Insert the Gallery Code in any of your posts or pages to display your Custom Gallery.'. "\n\n" . $additional_parameters_string);
  ?>
 </div>

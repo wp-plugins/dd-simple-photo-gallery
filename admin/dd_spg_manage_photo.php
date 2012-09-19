@@ -190,7 +190,7 @@
 ?>
 <div class='wrap'>
 <h2><a href='<?=PLUGINS_WEBSITE?>'><img src="<?php
-echo (BASE_URL . '/admin/images/logo_big.png'); ?>" align='center'/></a>Manage Photos | DD Simple Photo Gallery</h2>
+echo (DD_SFG_BASE_URL . '/admin/images/logo_big.png'); ?>" align='center'/></a>Manage Photos | DD Simple Photo Gallery</h2>
 
 
 <?php if (!empty($msg)) { ?>
@@ -410,7 +410,7 @@ echo (BASE_URL . '/admin/images/logo_big.png'); ?>" align='center'/></a>Manage P
 
 
 
-<div class="postbox-container" style="width: 29%;">
+<div class="postbox-container" style="width: 29%; margin-left: 10px;">
 <?php
 echo dd_spg_current_settings_box();
 echo dd_spg_box('Upload Instructions', 'Please see the above photos gallery settings and upload according the settings of photo gallery size in pixel.');

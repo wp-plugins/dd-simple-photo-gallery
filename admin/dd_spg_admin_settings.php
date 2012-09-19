@@ -10,8 +10,8 @@ add_action('admin_head', 'enqueue_dd_spg_admin_styles');
 * @access public
 */    
 function enqueue_dd_spg_admin_styles(){
-    //wp_enqueue_style('dd_spg_admin_styles_register_name', BASE_URL . '/admin/style.css');
-    $admin_style_url = BASE_URL . '/admin/css/style.css';
+    //wp_enqueue_style('dd_spg_admin_styles_register_name', DD_SFG_BASE_URL . '/admin/style.css');
+    $admin_style_url = DD_SFG_BASE_URL . '/admin/css/style.css';
     echo '<link rel="stylesheet" href="'.$admin_style_url.'" type="text/css" media="screen" />';
 }
 
@@ -38,7 +38,7 @@ function dd_spg_admin_init() {
 */
 function dd_spg_admin_menu() {
     
-    add_menu_page( $page_title='Manage Gallery', $menu_title='Galleries', $capability='publish_posts', $menu_slug='dd_spg_manage_gallery', $function='dd_spg_manage_gallery', $icon_url=BASE_URL . "/admin/images/dd_spg_logo.png");
+    add_menu_page( $page_title='Manage Gallery', $menu_title='Galleries', $capability='publish_posts', $menu_slug='dd_spg_manage_gallery', $function='dd_spg_manage_gallery', $icon_url=DD_SFG_BASE_URL . "/admin/images/dd_spg_logo.png");
     
     add_submenu_page( $parent_slug='dd_spg_manage_gallery', $page_title='Manage Photos | DD Simple Photo Gallery', $menu_title='Manage Photos', $capability='publish_posts', $menu_slug='dd_spg_manage_photo', $function='dd_spg_manage_photo');
     

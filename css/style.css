@@ -1,14 +1,9 @@
-*{
+.wrapper *{
 
     border:0;
     margin: 0;
     padding: 0;
 
-}
-
-body{
-    padding-top: 10px;
-    background: #141518;
 }
 
 .wrapper{

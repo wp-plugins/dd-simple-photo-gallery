@@ -6,7 +6,7 @@
 * @var string url
 * @access public
 */
-define('BASE_URL', plugins_url() . '/' . basename(dirname(__FILE__)));
+define('DD_SFG_BASE_URL', plugins_url() . '/' . basename(dirname(__FILE__)));
 
 /**
 * public constant for plugins name
@@ -30,7 +30,7 @@ define('SITE_URL', get_option('siteurl'));
 * @var float
 * @access public
 */
-define('VERSION', '1.1');
+define('VERSION', '1.2');
 
 /**
 * public constant for plugins details or support url
@@ -54,7 +54,7 @@ function dd_spg_box($title, $message) {
         <div class=\"postbox\">
         <h3>$title</h3>
         <table class='form-table'>
-        <td>$message</td>
+        <td>".nl2br($message)."</td>
         </table>
         </div></div>
         ";
@@ -88,7 +88,25 @@ function dd_spg_current_settings_box() {
     $message = "Display image information - <b>" . get_option('dd_spg_is_display_title_and_des') . "</b>";
     $message .= "<br />Size of Photos - <b>" . get_option('dd_spg_thumb_size') . "</b>";
     $message .= "<br />Photo Maximum Size - <b>" . get_option('dd_spg_large_size') . "</b>";
-	$message .= "<br />Slider Speed - <b>" . get_option('dd_spg_slide_speed') . " milliseconds</b>";
+    $message .= "<br />Slider Speed - <b>" . get_option('dd_spg_slide_speed') . " milliseconds</b>";
+    
+    $message .= "<br />Effect - <b>" . get_option('dd_spg_effect') . "</b>";
+    $message .= "<br />Slices - <b>" . get_option('dd_spg_slices') . "</b>";
+    $message .= "<br />Box Cols - <b>" . get_option('dd_spg_boxcols') . "</b>";
+    $message .= "<br />Box Rows - <b>" . get_option('dd_spg_boxrows') . "</b>";
+    $message .= "<br />Pause Time - <b>" . get_option('dd_spg_pausetime') . "</b>";
+    $message .= "<br />Large Nav Arrow - <b>" . get_option('dd_spg_largenavarrow') . "</b>";
+    $message .= "<br />Large Nav Arrow Default Hidden - <b>" . get_option('dd_spg_largenavarrowdefaulthidden') . "</b>";
+    $message .= "<br />Pause On Hover - <b>" . get_option('dd_spg_pauseonhover') . "</b>";
+    $message .= "<br />Auto Play Off - <b>" . get_option('dd_spg_manualadvance') . "</b>";
+    $message .= "<br />Keyboard Nav - <b>" . get_option('dd_spg_keyboardnav') . "</b>";
+    $message .= "<br />Display Gallery Caption - <b>" . get_option('dd_spg_displaygallerycaption') . "</b>";
+    $message .= "<br />Display Control Nav - <b>" . get_option('dd_spg_controlnav') . "</b>";
+    $message .= "<br />Display Thumb Nav - <b>" . get_option('controlnavthumbs') . "</b>";
+    $message .= "<br />Thumb Opacity - <b>" . get_option('dd_spg_captionopacity') . "</b>";
+    $message .= "<br />Prev Text - <b>" . get_option('dd_spg_prevtext') . "</b>";
+    $message .= "<br />Next Text - <b>" . get_option('dd_spg_nexttext') . "</b>";
+    
     return dd_spg_box('Default Settings for Preview', $message);
 }
 
@@ -271,6 +289,23 @@ function dd_spg_get_all_options() {
         'dd_spg_is_display_title_and_des' => get_option('dd_spg_is_display_title_and_des'),
         'dd_spg_thumb_size' => get_option('dd_spg_thumb_size'),
         'dd_spg_large_size' => get_option('dd_spg_large_size'),
-		'dd_spg_slide_speed' => get_option('dd_spg_slide_speed'),
+        'dd_spg_slide_speed' => get_option('dd_spg_slide_speed'),
+        
+        'dd_spg_effect' => get_option('dd_spg_effect'),
+        'dd_spg_slices' => get_option('dd_spg_slices'),
+        'dd_spg_boxcols' => get_option('dd_spg_boxcols'),
+        'dd_spg_boxrows' => get_option('dd_spg_boxrows'),
+        'dd_spg_pausetime' => get_option('dd_spg_pausetime'),
+        'dd_spg_largenavarrow' => get_option('dd_spg_largenavarrow'),
+        'dd_spg_largenavarrowdefaulthidden' => get_option('dd_spg_largenavarrowdefaulthidden'),
+        'dd_spg_pauseonhover' => get_option('dd_spg_pauseonhover'),
+        'dd_spg_manualadvance' => get_option('dd_spg_manualadvance'),
+        'dd_spg_prevtext' => get_option('dd_spg_prevtext'),
+        'dd_spg_nexttext' => get_option('dd_spg_nexttext'),
+        'dd_spg_keyboardnav' => get_option('dd_spg_keyboardnav'),
+        'dd_spg_displaygallerycaption' => get_option('dd_spg_displaygallerycaption'),
+        'dd_spg_controlnav' => get_option('dd_spg_controlnav'),
+        'dd_spg_controlnavthumbs' => get_option('dd_spg_controlnavthumbs'),
+        'dd_spg_captionopacity' => get_option('dd_spg_captionopacity')
     );
 }

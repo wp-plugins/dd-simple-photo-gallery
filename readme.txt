@@ -1,12 +1,10 @@
 === DD Simple Photo Gallery ===
 Contributors: phpfarmer
 Donate link: http://www.dropndot.com/blog/wordpress/dd-simple-photo-gallery-wordpress-plugin/
-Tags: photo,gallery,simple
-Requires at least: 2.8.4
-Tested up to: 3.1.3
-Stable tag: 1.1
-
-
+Tags: dd,photo,gallery,simple
+Requires at least: 3.0.1
+Tested up to: 3.4
+Stable tag: 1.2
 
 It is a very simple, fast and light weight wordpress plguins with gallery, photo and default settings management.
 
@@ -76,6 +74,10 @@ Yes, You can configure speed of slider using plugins default settings management
 4. Default settings management for plugins
 
 == Changelog ==
+
+= 1.2 =
+Some previous bug fixes!
+Added settings gallery wise overwriting default settings.
 
 = 1.1 =
 Removed Timthumb and added around 40 sliding effect!

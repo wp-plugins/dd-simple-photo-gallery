@@ -3,7 +3,7 @@
 Plugin Name: DD Simple Photo Gallery
 Plugin URI: http://www.dropndot.com/blog/wordpress/dd-simple-photo-gallery-wordpress-plugin/
 Description: DD Simple Photo Gallery is a free, simple, fast and light weight wordpress  plugin to create photo gallery for your wordpress enabled website.
-Version: 1.1
+Version: 1.2
 Author: Jewel Ahmed
 Author URI: http://www.phpfarmer.com
 License: GPL2
@@ -56,14 +56,14 @@ if ( is_admin() ) {
 //Loading dd simple photo gallery required javascript files
 function enqueue_dd_spg_scripts() {
     wp_enqueue_script('jquery');
-    wp_enqueue_script('enqueue_dd_spg_script1', BASE_URL . "/js/jquery-1.7.min.js");
-    wp_enqueue_script('enqueue_dd_spg_script2', BASE_URL . "/js/jquery.effects.core.js");
-    wp_enqueue_script('enqueue_dd_spg_script3', BASE_URL . "/js/jquery.ssslider.v1.0.min.js");
+    wp_enqueue_script('enqueue_dd_spg_script1', DD_SFG_BASE_URL . "/js/jquery-1.7.min.js");
+    wp_enqueue_script('enqueue_dd_spg_script2', DD_SFG_BASE_URL . "/js/jquery.effects.core.js");
+    wp_enqueue_script('enqueue_dd_spg_script3', DD_SFG_BASE_URL . "/js/jquery.ssslider.v1.2.min.js");
 }
 
 //Loading dd simple photo gallery required css files
 function enqueue_dd_spg_styles() {
-    wp_enqueue_style('enqueue_dd_spg_styles', BASE_URL . "/css/style.css", 100);
+    wp_enqueue_style('enqueue_dd_spg_styles', DD_SFG_BASE_URL . "/css/style.css", 100);
 }
 
 //Creating dd simple photo gallery front-end html out for post, page or category.
@@ -77,6 +77,23 @@ function dd_spg_display_gallery($atts) {
     $option_data = (object) $return_options_data;
     $dd_spg_is_display_title_and_des = strtolower($option_data->dd_spg_is_display_title_and_des);
     $dd_spg_slide_speed = strtolower($option_data->dd_spg_slide_speed);
+    
+    $dd_spg_effect = strtolower($option_data->dd_spg_effect);
+    $dd_spg_slices = strtolower($option_data->dd_spg_slices);
+    $dd_spg_boxcols = strtolower($option_data->dd_spg_boxcols);
+    $dd_spg_boxrows = strtolower($option_data->dd_spg_boxrows);
+    $dd_spg_pausetime = strtolower($option_data->dd_spg_pausetime);
+    $dd_spg_largenavarrow = strtolower($option_data->dd_spg_largenavarrow);
+    $dd_spg_largenavarrowdefaulthidden = strtolower($option_data->dd_spg_largenavarrowdefaulthidden);
+    $dd_spg_pauseonhover = strtolower($option_data->dd_spg_pauseonhover);
+    $dd_spg_manualadvance = strtolower($option_data->dd_spg_manualadvance);
+    $dd_spg_prevtext = strtolower($option_data->dd_spg_prevtext);
+    $dd_spg_nexttext = strtolower($option_data->dd_spg_nexttext);
+    $dd_spg_keyboardnav = strtolower($option_data->dd_spg_keyboardnav);
+    $dd_spg_displaygallerycaption = strtolower($option_data->dd_spg_displaygallerycaption);
+    $dd_spg_controlnav = strtolower($option_data->dd_spg_controlnav);
+    $dd_spg_controlnavthumbs = strtolower($option_data->dd_spg_controlnavthumbs);
+    $dd_spg_captionopacity = strtolower($option_data->dd_spg_captionopacity);
 	
 	//Initializing thumbnail width height
     $img_thumb_size = explode('x', strtolower(trim($option_data->dd_spg_thumb_size)));  //width x height
@@ -94,7 +111,28 @@ function dd_spg_display_gallery($atts) {
     
     extract( shortcode_atts( array(
         'id' => '0',
-    ), $atts ) );
+        'effect' => $dd_spg_effect,
+        'slices' => $dd_spg_slices,
+        'boxcols' => $dd_spg_boxcols,
+        'boxrows' => $dd_spg_boxrows,
+        'slidespeed' => $dd_spg_slide_speed,
+        'pausetime' => $dd_spg_pausetime,
+        'largenavarrow' => $dd_spg_largenavarrow,
+        'largenavarrowdefaulthidden' => $dd_spg_largenavarrowdefaulthidden,
+        'pausepnhover' => $dd_spg_pauseonhover,
+        'manualadvance' => $dd_spg_manualadvance,
+        'prevtext' => $dd_spg_prevtext,
+        'nexttext' => $dd_spg_nexttext,
+        'keyboardnav' => $dd_spg_keyboardnav,
+        'displaygallerycaption' => $dd_spg_is_display_title_and_des,
+        'controlnav' => $dd_spg_controlnav,
+        'controlnavthumbs' => $dd_spg_controlnavthumbs,
+        'controlnavthumbswidth' => $thumb_width,
+        'largeimageheight' => $img_large_height,
+        'largeimagewidth' => $img_large_width,
+        'controlnavthumbsheight' => $thumb_height,
+        'captionopacity' => $dd_spg_captionopacity,
+    ), $atts ) );   
     
     
     if(empty($id)){
@@ -112,6 +150,15 @@ function dd_spg_display_gallery($atts) {
     
     
     if(!empty($gallery_data)){
+        $upload_dir = wp_upload_dir();
+        /*Array ( 
+            [path] => C:\path\to\wordpress\wp-content\uploads\2010\05 
+            [url] => http://example.com/wp-content/uploads/2010/05 
+            [subdir] => /2010/05 
+            [basedir] => C:\path\to\wordpress\wp-content\uploads 
+            [baseurl] => http://example.com/wp-content/uploads 
+            [error] => 
+        )*/ 
         
         $return_text = '<div id="slider_'.$id.'" class="sssSlider">';
             foreach($photo_data as $row){
@@ -121,83 +168,58 @@ function dd_spg_display_gallery($atts) {
                 $ext = '.' . $wp_filetype['ext'];
                 $img = str_replace($ext, '-' . $img_large_width . 'x' . $img_large_height . $ext, $img);
                 
+                $tmp_img_url = $img;
+                $tmp_img_dir = str_replace($upload_dir['baseurl'], $upload_dir['basedir'], $img);
+                if(!file_exists($tmp_img_dir)){
+                    $img =  $row->photo;
+                }
+                
                 $image = '<img src="'.$img.'" alt="'.$row->title.'" title="'.$row->description.'" />';
                 $return_text.=$image;    
             }
         $return_text.='</div>';
 
         
+
         
-        echo $return_text;
-        ?>
-        <script type="text/javascript">
+$javascript_str = <<<EOD
+<script type="text/javascript">
 $(window).load(function() {               
-    $('#slider_<?=$id?>').ssSlider({
-        effect: 'random',
-        slices: 15,
-        boxCols: 8,
-        boxRows: 4,
-        slideSpeed: 500,
-        pauseTime: 5000,
-        largeNavArrow: true,
-        largeNavArrowDefaultHidden: true,
-        
-        pauseOnHover: true,
-        manualAdvance: false,
-        prevText: 'Prev',
-        nextText: 'Next',
-        keyboardNav: true,
-        
-        displayGalleryCaption: '<?=$dd_spg_is_display_title_and_des?>',
-        
-        
-        controlNav: true,
-        controlNavThumbs: true,
-        controlNavThumbsWidth: '<?=$thumb_width?>',
-        
-        largeImageHeight: '<?=$img_large_height?>',
-        largeImageWidth: '<?=$img_large_width?>',
-        
-        controlNavThumbsHeight: '<?=$thumb_height?>',
-        controlNavThumbsSearch: '<?=$extra?>',
-        controlNavThumbsReplace: '<?=$extra_replace?>',
-        
-        
-        
-        captionOpacity: 0.6,
-        
-        
-        defaultEffects: new Array(
-                    
-                    'sliceDownRight',
-                    'sliceDownLeft',
-                    'sliceDownRandom',
-                    
-                    'sliceUpRight',
-                    'sliceUpLeft',
-                    'sliceUpRandom',
-                    
-                    'sliceUpDownRight',
-                    'sliceUpDownLeft',
-                    'sliceUpDownRandom',
-                    
-                    'slide2Right',
-                    'slide2Left',  
-                    
-                    'slice2Right',
-                    'slice2Left'
-                      
-        ),
+    $('#slider_{$id}').ssSlider({
+        effect: '{$effect}',
+        slices: '{$slices}',
+        boxCols: '{$boxcols}',
+        boxRows: '{$boxrows}',
+        slideSpeed: '{$slidespeed}',
+        pauseTime: '{$pausetime}',
+        largeNavArrow: '{$largenavarrow}',
+        largeNavArrowDefaultHidden: '{$largenavarrowdefaulthidden}',
+        pauseOnHover: '{$pauseonhover}',
+        manualAdvance: '{$manualadvance}',
+        prevText: '{$prevtext}',
+        nextText: '{$nexttext}',
+        keyboardNav: '{$keyboardnav}',
+        displayGalleryCaption: '{$displayhallerycaption}',
+        controlNav: '{$controlnav}',
+        controlNavThumbs: '{$controlnavthumbs}',
+        controlNavThumbsWidth: '{$controlnavthumbswidth}',
+        largeImageHeight: '{$largeimageheight}',
+        largeImageWidth: '{$largeimagewidth}',
+        controlNavThumbsHeight: '{$controlnavthumbsheight}',
+        controlNavThumbsSearch: '{$extra}',
+        controlNavThumbsReplace: '{$extra_replace}',
+        captionOpacity: '{$captionopacity}',
         beforeChange: function(){},
         afterChange: function(){},
         slideshowEnd: function(){},
         lastSlide: function(){},
         afterLoad: function(){}
-    });
-   
+    });                                   
 });
 </script>
-        <?php 
+EOD;
+        $return_text.= $javascript_str;
+        return $return_text;
         
     } else {
         return false;
@@ -262,6 +284,56 @@ function dd_spg_install_options(){
     // add_option( $name, $value, $deprecated, $autoload );
     if(!get_option('dd_spg_slide_speed'))
         add_option('dd_spg_slide_speed', '500', '', 'no');       // image thumbnail sliding speed in milliseconds 
+    
+    if(!get_option('dd_spg_effect'))
+        add_option('dd_spg_effect', 'random', '', 'no');       // image transition effect 
+    
+    if(!get_option('dd_spg_slices'))
+        add_option('dd_spg_slices', '18', '', 'no');       
+    
+    if(!get_option('dd_spg_boxcols'))
+        add_option('dd_spg_boxcols', '8', '', 'no');       
+    
+    if(!get_option('dd_spg_boxrows'))
+        add_option('dd_spg_boxrows', '4', '', 'no');       
+    
+    if(!get_option('dd_spg_pausetime'))
+        add_option('dd_spg_pausetime', '5000', '', 'no');       
+    
+    if(!get_option('dd_spg_largenavarrow'))
+        add_option('dd_spg_largenavarrow', 'true', '', 'no');       
+    
+    if(!get_option('dd_spg_largenavarrowdefaulthidden'))
+        add_option('dd_spg_largenavarrowdefaulthidden', 'true', '', 'no');       
+    
+    if(!get_option('dd_spg_pauseonhover'))
+        add_option('dd_spg_pauseonhover', 'true', '', 'no');       
+    
+    if(!get_option('dd_spg_manualadvance'))
+        add_option('dd_spg_manualadvance', 'false', '', 'no');       
+    
+    if(!get_option('dd_spg_prevtext'))
+        add_option('dd_spg_prevtext', 'Prev', '', 'no');       
+    
+    if(!get_option('dd_spg_nexttext'))
+        add_option('dd_spg_nexttext', 'Next', '', 'no');       
+    
+    if(!get_option('dd_spg_keyboardnav'))
+        add_option('dd_spg_keyboardnav', 'true', '', 'no');       
+    
+    if(!get_option('dd_spg_displaygallerycaption'))
+        add_option('dd_spg_displaygallerycaption', 'false', '', 'no');       
+    
+    if(!get_option('dd_spg_controlnav'))
+        add_option('dd_spg_controlnav', 'true', '', 'no');       
+    
+    if(!get_option('dd_spg_controlnavthumbs'))
+        add_option('dd_spg_controlnavthumbs', 'true', '', 'no');       
+    
+    if(!get_option('dd_spg_captionopacity'))
+        add_option('dd_spg_captionopacity', '0.6', '', 'no');       
+    
+    
     
     if(!get_option('dd_spg_is_display_title_and_des'))
         add_option('dd_spg_is_display_title_and_des', 'yes', '', 'no');       // image information display or not settings 
