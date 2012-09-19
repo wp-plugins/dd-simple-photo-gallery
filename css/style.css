@@ -1,0 +1,163 @@
+.wrapper *{
+
+    border:0;
+    margin: 0;
+    padding: 0;
+
+}
+
+.wrapper{
+    
+    width:auto;
+    display: block;
+    margin: 0 auto;
+    border: 0px solid #d3d3d3;
+    /*overflow: hidden;   */
+}
+ 
+    
+    
+.sliderWapper{
+	border: 20px solid #d3d3d3;
+	margin:0 auto;
+	display:block;
+	margin-bottom:10px;
+	clear:both;
+	overflow:hidden;
+}
+    
+  
+.sssSlider {
+    position:relative;
+	margin: 0 auto;
+}
+
+.sssSlider img {
+    position:absolute;
+    top:0px;
+    left:0px;
+}
+  
+/* The slices and boxes in the Slider */
+.sss-slice {
+    display:block;
+    position:absolute;
+    z-index:5;
+    /*border: 1px solid #F00;*/
+}
+.sss-box {
+    display:block;
+    position:absolute;
+    z-index:5;
+}  
+        
+
+        
+/*Others option settings control css*/        
+.sssLargeNav a {
+    position:absolute;
+    bottom:25px;
+    z-index:9;
+    cursor:pointer;
+}
+.sssPre {
+  background-image:url(./images/sssIcons.png);
+  background-position:-2px -3px;
+  cursor:pointer;
+  height:17px;
+  left:20px;
+  position:absolute;
+  width:13px;
+  text-indent: -9999px;                   
+}
+.sssNext {
+  background-image:url(./images/sssIcons.png);
+  background-position:-20px -3px;
+  bottom:126px;
+  cursor:pointer;
+  height:17px;
+  position:absolute;
+  right:20px;
+  width:13px;
+  text-indent: -9999px;
+}
+
+.sssNext, .sssPre{
+  position:absolute;
+  top:45%;
+}
+
+.sssPre:hover {
+  background-position:-2px -23px;
+}
+.sssNext:hover {
+  background-position:-20px -23px;
+}
+
+
+/* Caption styles */
+.sss-caption {
+    position: absolute;
+    bottom:0px;
+    opacity:0.7; /* Overridden by captionOpacity setting */
+    width:100%;
+    z-index:8;
+    padding: 5px 0;
+    height: 60px;
+    border: 0px solid #F00;
+    text-align: left;
+    background: #d3d3d3;
+}
+
+.sss-caption p, .sss-caption p a{
+    font-family: Tahoma, Helvetica, sans-serif;
+    color: #3F4146;
+    font-size: 12px;
+}
+
+.sss-controlNav a {
+    position:relative;
+    z-index:9;
+    cursor:pointer;
+}
+.sss-controlNav a.active {
+    font-weight:bold;
+}
+
+
+.sss-caption p {
+    padding:5px;
+    margin:0;
+}
+.sss-caption a {
+    display:inline !important;
+}
+.sss-html-caption {
+    display:none;
+}
+
+.sss-controlNav{
+    border-top: 20px solid #d3d3d3;
+     background : #d3d3d3;
+}
+
+
+.sss-thumb-inner a{
+    
+}
+
+.sss-thumb-inner a:last-child{
+    border-right: 0;
+}
+.sss-thumb-inner a img{    
+    
+    opacity:0.7;
+}
+
+.sss-controlNav a.active img, .sss-controlNav a:hover img{
+    opacity:1;
+}
+
+
+/*.sss-thumb-inner a { overflow: hidden; position: relative; } 
+.sss-thumb-inner a img { position: absolute; }*/
